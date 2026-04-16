@@ -63,6 +63,35 @@ export default function StoreFront() {
         </div>
       </section>
 
+      {/* Sale Conditions Banner */}
+      <section className="sale-conditions">
+        <div className="container">
+          <h2 className="sale-conditions__title">Sale Details & Pickup Information</h2>
+          <div className="sale-conditions__grid">
+            <div className="sale-conditions__item">
+              <p className="sale-conditions__label">Pickup Location</p>
+              <p className="sale-conditions__value">Cupertino, CA</p>
+            </div>
+            <div className="sale-conditions__item">
+              <p className="sale-conditions__label">First Come, First Served</p>
+              <p className="sale-conditions__value">No holds, please</p>
+            </div>
+            <div className="sale-conditions__item">
+              <p className="sale-conditions__label">Pricing</p>
+              <p className="sale-conditions__value">Negotiable • Discounts on bulk purchases</p>
+            </div>
+            <div className="sale-conditions__item">
+              <p className="sale-conditions__label">Payment Methods</p>
+              <p className="sale-conditions__value">Cash, Venmo, or Zelle</p>
+            </div>
+            <div className="sale-conditions__item" style={{ gridColumn: '1 / -1' }}>
+              <p className="sale-conditions__label">Questions?</p>
+              <p className="sale-conditions__value">WhatsApp: <a href="https://wa.me/919202735672" target="_blank" rel="noreferrer" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>+91-92027-35672</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filters */}
       <div className="filters">
         <div className="filters__inner">

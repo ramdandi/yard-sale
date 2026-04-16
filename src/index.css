@@ -115,6 +115,63 @@ a {
   color: var(--ink);
 }
 
+/* ── Sale Conditions Banner ─────────────────────────────────────────────── */
+.sale-conditions {
+  background: var(--white);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 2.5rem var(--gutter);
+}
+
+.sale-conditions__title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.sale-conditions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.sale-conditions__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sale-conditions__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+
+.sale-conditions__value {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+.sale-conditions__value a {
+  color: var(--gold);
+  text-decoration: underline;
+  transition: color 0.2s var(--ease);
+}
+
+.sale-conditions__value a:hover {
+  color: var(--ink);
+}
+
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 .hero {
   padding: clamp(4rem, 10vw, 8rem) var(--gutter) clamp(3rem, 8vw, 6rem);
