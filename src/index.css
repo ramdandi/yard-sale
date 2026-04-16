@@ -370,6 +370,38 @@ a {
   opacity: 0.25;
 }
 
+.item-card__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(26, 26, 24, 0.6);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.65rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.item-card:hover .item-card__nav-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.item-card__nav-btn:hover {
+  background: rgba(26, 26, 24, 0.9);
+}
+
+.item-card__nav-btn--prev {
+  left: 0.5rem;
+}
+
+.item-card__nav-btn--next {
+  right: 0.5rem;
+}
+
 .item-card__badge {
   position: absolute;
   top: 0.75rem;
@@ -379,6 +411,7 @@ a {
   text-transform: uppercase;
   padding: 0.25rem 0.65rem;
   border-radius: 2px;
+  z-index: 2;
 }
 
 .badge--sold {

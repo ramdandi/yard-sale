@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const PlaceholderIcon = () => (
   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
@@ -11,25 +12,60 @@ const PlaceholderIcon = () => (
 const STATUS_LABELS = { available: 'Available', hold: 'On Hold', sold: 'Sold' }
 
 export default function ItemCard({ item, onOfferClick }) {
+  const [imageIndex, setImageIndex] = useState(0)
   const isSold = item.status === 'sold'
   const isHold = item.status === 'hold'
   const images = item.images || (item.image ? [item.image] : [])
-  const firstImage = images[0] || null
+  const currentImage = images[imageIndex] || null
+
+  const handlePrevImage = (e) => {
+    e.preventDefault()
+    setImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+  }
+
+  const handleNextImage = (e) => {
+    e.preventDefault()
+    setImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+  }
 
   return (
     <article className={`item-card${isSold ? ' sold' : ''}`}>
-      {/* LEFT: Image Column */}
+      {/* LEFT: Image Column with Carousel */}
       <div className="item-card__image-wrap">
-        {firstImage ? (
-          <img src={firstImage} alt={item.title} loading="lazy" />
+        {currentImage ? (
+          <img src={currentImage} alt={item.title} loading="lazy" />
         ) : (
           <div className="item-card__placeholder"><PlaceholderIcon /></div>
         )}
+
+        {/* Navigation Arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              className="item-card__nav-btn item-card__nav-btn--prev"
+              onClick={handlePrevImage}
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+            <button
+              className="item-card__nav-btn item-card__nav-btn--next"
+              onClick={handleNextImage}
+              aria-label="Next image"
+            >
+              ›
+            </button>
+          </>
+        )}
+
+        {/* Status Badge */}
         {(isSold || isHold) && (
           <span className={`item-card__badge badge--${item.status}`}>
             {STATUS_LABELS[item.status]}
           </span>
         )}
+
+        {/* Image Counter */}
         {images.length > 1 && (
           <span style={{
             position: 'absolute', bottom: '0.6rem', right: '0.6rem',
@@ -37,7 +73,7 @@ export default function ItemCard({ item, onOfferClick }) {
             fontSize: '0.6rem', letterSpacing: '0.08em',
             padding: '0.2rem 0.5rem', backdropFilter: 'blur(4px)',
           }}>
-            {images.length} photos
+            {imageIndex + 1} / {images.length}
           </span>
         )}
       </div>
